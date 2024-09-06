@@ -105,7 +105,7 @@ const Input = ({
   };
 
   return (
-    <div className="mb-4">
+    <div>
       <label className="block text-gray-600 text-sm mb-1" htmlFor={name}>
         {label}
         {required && !isUserTyping && <span className="text-rose-500">*</span>}
