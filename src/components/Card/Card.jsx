@@ -14,10 +14,15 @@ import "./card.css";
  */
 
 const Card = (props) => {
-  const { id, image, title, description, price, click } = props;
+  const { id, image, title, description, price, click, onCardClick } = props;
+
+  const handleCardClick = (id) => {
+    onCardClick && onCardClick(id);
+  };
 
   return (
     <div
+      onClick={handleCardClick}
       key={id ?? "undefined"}
       data-id={id ?? "undefined"}
       className="bg-white rounded-lg shadow-lg overflow-hidden max-w-xs w-full"
