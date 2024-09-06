@@ -1,0 +1,56 @@
+.container {
+  padding: 0 0.2rem;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.cardWrapper {
+  display: flex;
+  gap: 67px;
+  justify-content: space-between;
+}
+
+.image {
+  width: 320px;
+  height: fit-content;
+}
+
+.cardDetails {
+  width: 690px;
+}
+
+.details {
+  width: 690px;
+}
+
+.itemDetails {
+  display: flex;
+  gap: 25px;
+  padding: 12px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.itemTitle {
+  width: 300px;
+  font-size: 16px;
+  color: #585858;
+}
+
+.itemText {
+  width: 100%;
+  font-size: 16px;
+}
+
+.cardDescription {
+  margin-top: 49px;
+}
+
+.detailsTitle {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
