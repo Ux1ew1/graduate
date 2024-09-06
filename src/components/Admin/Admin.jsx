@@ -1,6 +1,7 @@
 import Table from "../Table/Table";
 import useFetchItemsStore from "../../store/useFetchItemsStore";
 import useForm from "../../hooks/useForm";
+import Button from "../Button/Button";
 import Alert from "../Alert/Alert";
 import { Drawer } from "../Drawer/Drawer";
 import { useEffect, useState } from "react";
@@ -138,7 +139,7 @@ const Admin = () => {
                   className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   name="name"
                   type="text"
-                  defaultValue={selectedValue?.title || formValues?.title}
+                  defaultValue={selectedValue?.name || formValues?.name}
                   onChange={handleInput}
                   placeholder="Введите название"
                 />
@@ -197,14 +198,20 @@ const Admin = () => {
                 />
               </div>
 
-              {selectedValue && (
-                <>
-                  <button onClick={handleEditItem}>Добавить</button>
-                  <button onClick={handleDeleteItem}>Удалить</button>
-                </>
+              {selectedValue ? (
+                <div className="flex gap-2">
+                  <Button variant="info" onClick={handleEditItem}>
+                    Добавить
+                  </Button>
+                  <Button variant="warning" onClick={handleDeleteItem}>
+                    Удалить
+                  </Button>
+                </div>
+              ) : (
+                <Button variant="info" type="submit">
+                  Добавить
+                </Button>
               )}
-
-              <button type="submit">Добавить</button>
             </form>
           </div>
         </Drawer>

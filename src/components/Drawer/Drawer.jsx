@@ -76,7 +76,7 @@ export const Drawer = ({
   return (
     isOpen &&
     createPortal(
-      <div className="absolute z-20 top-0 left-0 right-0 bottom-0 bg-opacity-50 bg-black">
+      <div className="fixed z-20 top-0 left-0 right-0 bottom-0 bg-opacity-50 bg-black">
         <aside
           ref={drawerRef}
           className={`fixed top-0 bottom-0 ${
