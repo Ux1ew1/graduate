@@ -1,5 +1,8 @@
+import Stepper from "../Stepper/Stepper";
+
 const CartItem = (props) => {
-  const { id, image, title, price, click } = props;
+  const { id, image, title, price, click, quantity, increment, dicrement } =
+    props;
   return (
     <div
       key={id}
@@ -11,11 +14,12 @@ const CartItem = (props) => {
       </div>
       <div className="flex items-center gap-6">
         <span>Цена: {price} рублей</span>
-        <div className="bg-white py-1 rounded-md border-2 border-gray-400">
-          <button className="mx-2 pr-2 border-r-2 border-gray-400">+</button>
-          <span>1</span>
-          <button className="mx-2 pl-2 border-l-2 border-gray-400">-</button>
-        </div>
+        <Stepper
+          minValue="1"
+          increment={increment}
+          dicrement={dicrement}
+          quantity={quantity}
+        />
         <button className="bg-white px-2 py-2" onClick={() => click()}>
           Убрать
         </button>
