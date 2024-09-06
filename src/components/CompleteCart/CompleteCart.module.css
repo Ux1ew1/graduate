@@ -1,0 +1,35 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid black;
+  padding: 0.2rem 0.4rem;
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid black;
+  padding: 0.2rem 0.4rem;
+  width: 60%;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 0.2rem 0.4rem;
+  width: 40%;
+}
+
+.itemFooter {
+  padding-top: 0.6rem;
+  border-top: 1px solid gray;
+}
