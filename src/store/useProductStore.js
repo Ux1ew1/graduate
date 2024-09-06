@@ -12,15 +12,27 @@ export const useProductStore = create(
       // Функция для добавления товара в корзину
       addCartItem: (item) =>
         set((state) => {
-          const updateCartItems = [...state.cartItems, item]; // диструктурируем корзину и добавляем в конец новый товар.
-          const newTotalPrice = updateCartItems.reduce(
-            // функция для подсчта стоимости всех товаров в корзине
-            (total, item) => total + +item.price,
-            0
+          // функция для поиска товара в корзине по id
+          const existingProduct = state.cartItems.find(
+            (product) => product.id === item.id
           );
-          console.log(state.cartItems);
-          console.log(item.price);
-          return { cartItems: updateCartItems, totalPrice: newTotalPrice }; // возвращаем корзину с новыми товарами и стоимостью всех товаров.
+          const cart = [...state.cartItems, item];
+          console.log(cart);
+
+          if (existingProduct) {
+            existingProduct.quantity += 1;
+
+            console.log("Товар:", existingProduct);
+            console.log("Количество товара:", existingProduct.quantity);
+
+            return {
+              cartItems: [...state.cartItems],
+            };
+          } else {
+            return {
+              cartItems: [...state.cartItems, { ...item, quantity: 1 }],
+            };
+          }
         }),
 
       // функция которая убирает товар из корзины.
@@ -28,30 +40,37 @@ export const useProductStore = create(
         set((state) => {
           const updateCartItems = state.cartItems.filter(
             // функция которая фильтрует товары и убирает товар который был передан в функию
-            (cartItem) => cartItem !== item
+            (cartItem) => cartItem?.id !== item?.id
           );
 
-          const newTotalPrice = updateCartItems.reduce(
-            // функция для подсчёта стоимости товаров
-            (total, item) => total + +item.price,
-            0
-          );
-          return { cartItems: updateCartItems, totalPrice: newTotalPrice };
+          return {
+            cartItems: updateCartItems,
+          };
         }),
 
-      // функция для подсчёта общей суммы товаров в корзине
-      calculateTotalPrice: () => {
-        const state = get(); // получаем state
-        const newTotalPrice = state.cartItems.reduce(
-          // функция подсчитывает стоимость товаров
-          (total, item) => total + +item.price,
-          0
-        );
-        return { totalPrice: newTotalPrice };
-      },
+      // функция для обновления количества товара в корзине
+      updateQuantity: (productId, quantity) =>
+        set((state) => {
+          const updateCart = state.cartItems.map((item) =>
+            item.id === productId ? { ...item, quantity } : item
+          );
+
+          return { cartItems: updateCart };
+        }),
+
+      calculateCartPrice: () =>
+        set((state) => {
+          const newPrice = state.cartItems.reduce(
+            (total, item) => total + item.price * item.quantity,
+            0
+          );
+          return { totalPrice: newPrice };
+        }),
     }),
+
     {
       name: "cartItems", // название ключа в local storage
+      partialize: (state) => ({ cartItems: state.cartItems }),
     }
   )
 );
@@ -59,6 +78,6 @@ export const useProductStore = create(
 // фунция для обновления суммы товаров в корзине товаров при взаимодействии с ней
 useProductStore.subscribe((state, prevState) => {
   if (state.cartItems != prevState.cartItems) {
-    useProductStore.getState().calculateTotalPrice();
+    useProductStore.getState().calculateCartPrice();
   }
 });
