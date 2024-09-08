@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const Admin = () => {
   const data = useFetchItemsStore((state) => state.items);
   const fetchItems = useFetchItemsStore((state) => state.fetchItems);
-
+  console.log(data);
   useEffect(() => {
     fetchItems();
   }, [fetchItems]);
@@ -30,6 +30,7 @@ const Admin = () => {
   // функции из хука useForm
   const { formValues, handleInput, resetForm } = useForm({
     name: "",
+    description: "",
     category: "",
     price: "",
   });

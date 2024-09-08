@@ -9,7 +9,7 @@ const useFetchItemsStore = create((set) => ({
 
   fetchItems: async () => {
     try {
-      const response = await fetch("http://localhost:3000/menu");
+      const response = await fetch("http://localhost:3000/promo");
 
       if (!response.ok) throw new Error("Failed to fetch! Try again.");
 
@@ -27,7 +27,7 @@ const useFetchItemsStore = create((set) => ({
 
   addItem: async (newItem) => {
     try {
-      const response = await fetch("http://localhost:3000/menu", {
+      const response = await fetch("http://localhost:3000/promo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const useFetchItemsStore = create((set) => ({
 
   editItem: async (id, updateItem) => {
     try {
-      const response = await fetch(`http://localhost:3000/menu/${id}`, {
+      const response = await fetch(`http://localhost:3000/promo/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const useFetchItemsStore = create((set) => ({
 
   deleteItem: async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/menu/${id}`, {
+      const response = await fetch(`http://localhost:3000/promo/${id}`, {
         method: "DELETE",
       });
 

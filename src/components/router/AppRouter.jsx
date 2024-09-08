@@ -5,6 +5,8 @@ import MainLayout from "../MainLayout/MainLayout";
 import Cart from "../Cart/Cart.jsx";
 import PrivateRoute from "../router/PrivateRoute.jsx";
 import Admin from "../Admin/Admin.jsx";
+import CompleteCart from "../CompleteCart/CompleteCart.jsx";
+import CardDetails from "../CardDetails/CardDetails.jsx";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -14,6 +16,8 @@ const routes = [
     path: "admin",
     element: <PrivateRoute element={<Admin />} requiredRole="admin" />,
   },
+  { path: "complete", element: <CompleteCart /> },
+  { path: "cards/:id", element: <CardDetails /> },
 ];
 
 const renderRoutes = (routes) => {

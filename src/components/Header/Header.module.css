@@ -1,0 +1,27 @@
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.translate {
+  height: 690px;
+  display: flex;
+  transform: translateX(-352px);
+  transition: all 0.2s ease;
+}
+
+.wrapper {
+  height: 290px;
+  display: flex;
+  gap: 100px;
+  transition: all 0.2s ease;
+}
+
+.step1 {
+  min-width: 352px;
+}
+
+.step2 {
+  min-width: 352px;
+}
