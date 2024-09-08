@@ -17,9 +17,6 @@ const Admin = () => {
   // Стейт для показа и скрытия Drawer
   const [isShowDrawer, setShowDrawer] = useState(false);
 
-  // Стейт для показа уведовления
-  const [isShowAlert, setShowAlert] = useState(false);
-
   // Стейт для показа детальной информации в Drawer
   const [selectedValue, setSelectedValue] = useState(null);
 
@@ -29,10 +26,20 @@ const Admin = () => {
 
   // функции из хука useForm
   const { formValues, handleInput, resetForm } = useForm({
+    img: "",
     name: "",
     description: "",
+    composition: "",
     category: "",
     price: "",
+    cooking: "",
+  });
+
+  const [alertData, setAlertData] = useState({
+    title: "",
+    subtitle: "",
+    variant: "neutral",
+    isOpen: false,
   });
 
   // Функция для редактирования item
@@ -41,6 +48,13 @@ const Admin = () => {
       editItem(selectedValue?.id, formValues);
 
       setShowDrawer(false);
+
+      setAlertData({
+        title: "Изменение",
+        subtitle: "Товар успешно был изменён",
+        variant: "info",
+        isOpen: true,
+      });
 
       setSelectedValue(null);
     }
@@ -53,6 +67,13 @@ const Admin = () => {
 
       setShowDrawer(false);
 
+      setAlertData({
+        title: "Товар убран",
+        subtitle: "Товар успешно был убран",
+        variant: "warning",
+        isOpen: true,
+      });
+
       setSelectedValue(null);
     }
   };
@@ -60,6 +81,7 @@ const Admin = () => {
   // Функиця для показа дополнительной информации по товару
   const handleRowDoubleClick = (rowData) => {
     setSelectedValue(rowData);
+
     console.log(rowData);
     setShowDrawer(true);
   };
@@ -71,7 +93,12 @@ const Admin = () => {
 
     setShowDrawer(false);
 
-    setShowAlert(true);
+    setAlertData({
+      title: "Товар добавлен",
+      subtitle: "Товар успешно был добавлен",
+      variant: "success",
+      isOpen: true,
+    });
 
     resetForm();
   };
@@ -115,7 +142,9 @@ const Admin = () => {
           { key: "name", title: "Название" },
           { key: "description", title: "Описание" },
           { key: "composition", title: "Состав" },
+          { category: "category", title: "Категория" },
           { key: "price", title: "цена" },
+          { key: "cooking", title: "Время приготовления" },
         ]}
         data={data}
         onRowDoubleClick={handleRowDoubleClick}
@@ -153,14 +182,19 @@ const Admin = () => {
                 >
                   Категория товара
                 </label>
-                <input
-                  className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                <select
                   name="category"
-                  type="text"
+                  className="shadowappearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   defaultValue={selectedValue?.category || formValues?.category}
                   onChange={handleInput}
-                  placeholder="Введите категорию"
-                />
+                >
+                  <option value="пицца">Пицца</option>
+                  <option value="суп">Суп</option>
+                  <option value="коктейль">Коктейль</option>
+                  <option value="салат">Салат</option>
+                  <option value="пьядина">Пьядина</option>
+                  <option value="фритюр">Фритюр</option>
+                </select>
               </div>
 
               <div className="mb-4">
@@ -180,6 +214,59 @@ const Admin = () => {
                   onChange={handleInput}
                   placeholder="Введите описание"
                 ></textarea>
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="taskName"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Состав
+                </label>
+                <textarea
+                  rows="4"
+                  className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  name="composition"
+                  defaultValue={
+                    selectedValue?.composition || formValues?.composition
+                  }
+                  onChange={handleInput}
+                  placeholder="Введите состав"
+                ></textarea>
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="taskName"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Время приготовления
+                </label>
+                <input
+                  className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  name="cooking"
+                  type="text"
+                  defaultValue={selectedValue?.cooking || formValues?.cooking}
+                  onChange={handleInput}
+                  placeholder="Введите время приготовления"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="taskName"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Время приготовления
+                </label>
+                <input
+                  className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  name="img"
+                  type="text"
+                  defaultValue={selectedValue?.img || formValues?.img}
+                  onChange={handleInput}
+                  placeholder="Введите URL до картинки"
+                />
               </div>
 
               <div className="mb-4">
@@ -218,11 +305,15 @@ const Admin = () => {
         </Drawer>
       )}
       <Alert
-        title="Товар добавлен."
-        subtitle="Товад был добавлен в меню."
-        variant="info"
-        isOpen={isShowAlert}
-        onClose={() => setShowAlert(false)}
+        title={alertData?.title}
+        subtitle={alertData?.subtitle}
+        variant={alertData?.variant}
+        isOpen={alertData?.isOpen}
+        onClose={() => {
+          setAlertData((prevAlertData) => ({
+            isOpen: !prevAlertData.isOpen,
+          }));
+        }}
       />
     </div>
   );
