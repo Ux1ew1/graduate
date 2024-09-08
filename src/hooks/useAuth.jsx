@@ -25,6 +25,7 @@
 // };
 
 import { createContext, useContext, useState, useEffect } from "react";
+import Alert from "../components/Alert/Alert";
 
 /**
  * Контекст для управления состоянием  аутентификации пользователя
@@ -44,6 +45,13 @@ export const AuthProvider = ({ children }) => {
    * @type {object | null}
    */
   const [user, setUser] = useState(null);
+
+  const [alertData, setAlertData] = useState({
+    title: "",
+    subtitle: "",
+    variant: "neutral",
+    isOpen: false,
+  });
 
   useEffect(() => {
     // Проверка аутентификации при загрузке страницы
@@ -96,8 +104,20 @@ export const AuthProvider = ({ children }) => {
       onLogin(createdUser); // Выполняем вход после регистрации ?
 
       localStorage.setItem("user", JSON.stringify(createdUser));
+      setAlertData({
+        title: "Регистрация прошла успешно",
+        subtitle: "Пользователь успешно зарегистрирован",
+        variant: "success",
+        isOpen: true,
+      });
     } catch (error) {
       console.error("Ошибка при регистрации пользователя:", error);
+      setAlertData({
+        title: "Не удалось зарегистрироваться",
+        subtitle: "Не удалось выполнить регистрацию",
+        variant: "warning",
+        isOpen: true,
+      });
     }
   };
 
@@ -135,9 +155,21 @@ export const AuthProvider = ({ children }) => {
         setUser(user);
 
         localStorage.setItem("user", JSON.stringify(user));
+        setAlertData({
+          title: "Вход выполнент успешно",
+          subtitle: "Выполнен вход в систему",
+          variant: "success",
+          isOpen: true,
+        });
       } else {
         // Пользователь не найден или данные неверны
         console.error("Неверное имя пользователя или пароль");
+        setAlertData({
+          title: "Не удалось войти в систему",
+          subtitle: "Вход не выполнен",
+          variant: "warning",
+          isOpen: true,
+        });
         // Можно добавить логику для отображения ошибки пользователю
       }
     } catch (error) {
@@ -158,7 +190,22 @@ export const AuthProvider = ({ children }) => {
   const contextValue = { user, onRegister, onLogin, onLogout };
 
   return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    <>
+      <AuthContext.Provider value={contextValue}>
+        {children}
+      </AuthContext.Provider>
+      <Alert
+        title={alertData?.title}
+        subtitle={alertData?.subtitle}
+        variant={alertData?.variant}
+        isOpen={alertData?.isOpen}
+        onClose={() => {
+          setAlertData((prevAlertData) => ({
+            isOpen: !prevAlertData.isOpen,
+          }));
+        }}
+      />
+    </>
   );
 };
 
