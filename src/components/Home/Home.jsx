@@ -7,17 +7,32 @@ import Button from "../Button/Button";
 import { useAuth } from "../../hooks/useAuth";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import Card from "../Card/Card";
+import menu from "../../../db.json";
+import { useProductStore } from "../../store/useProductStore";
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
+
+const dbItems = menu.menu;
+
+console.log(dbItems[1].id);
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const Home = () => {
+  const navigate = useNavigate();
   const data = useFetchPromoStore((state) => state.items);
   const fetchItems = useFetchPromoStore((state) => state.fetchItems);
 
@@ -42,6 +57,22 @@ const Home = () => {
   });
 
   const { user } = useAuth();
+
+  const addCartItem = useProductStore((state) => state.addCartItem); // получаем из стора функию для добавления товаров в корзину
+
+  // функция добавляет товар в корзину и показываем уведомление
+  const handleAddItemToCart = (item) => {
+    addCartItem(item);
+  };
+
+  useEffect(() => {
+    fetchItems();
+  }, [fetchItems]);
+
+  const handleCardClick = (id) => {
+    console.log(id);
+    navigate(`/cards/${id}`);
+  };
 
   // Функция для редактирования item
   const handleEditItem = () => {
@@ -97,24 +128,15 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home</h1>
-      <p>Начальная страница</p>
       <div>
-        <input
-          type="radio"
-          id="1"
-          name="category"
-          className={Styles.radioInput}
-        />
-        <label htmlFor="1">Все</label>
-
         <div>
-          <h2>Акции</h2>
+          <h2 className="text-2xl font-semibold mb-2">Акции</h2>
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
             className="bg-gray-100 w-[90rem] h-96"
             slidesPerView={1}
             navigation
+            autoplay={{ delay: 2000 }}
             pagination={{ clickable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
@@ -169,6 +191,51 @@ const Home = () => {
             </div>
           </form>
         </Drawer>
+        <div className="my-4">
+          <h2 className="text-2xl font-semibold mb-4">Популярные позиции</h2>
+          <div className="flex justify-between">
+            <Card
+              key={dbItems[1]?.id}
+              id={dbItems[1]?.id}
+              image={dbItems[1]?.img}
+              title={dbItems[1]?.name}
+              description={dbItems[1]?.description}
+              price={dbItems[1]?.price}
+              click={() => handleAddItemToCart(dbItems)}
+              onCardClick={() => handleCardClick(dbItems[1].id)}
+            />
+            <Card
+              key={dbItems[2]?.id}
+              id={dbItems[2]?.id}
+              image={dbItems[2]?.img}
+              title={dbItems[2]?.name}
+              description={dbItems[2]?.description}
+              price={dbItems[2]?.price}
+              click={() => handleAddItemToCart(dbItems)}
+              onCardClick={() => handleCardClick(dbItems[2].id)}
+            />
+            <Card
+              key={dbItems[3]?.id}
+              id={dbItems[3]?.id}
+              image={dbItems[3]?.img}
+              title={dbItems[3]?.name}
+              description={dbItems[3]?.description}
+              price={dbItems[3]?.price}
+              click={() => handleAddItemToCart(dbItems)}
+              onCardClick={() => handleCardClick(dbItems[3].id)}
+            />
+            <Card
+              key={dbItems[4]?.id}
+              id={dbItems[4]?.id}
+              image={dbItems[4]?.img}
+              title={dbItems[4]?.name}
+              description={dbItems[4]?.description}
+              price={dbItems[4]?.price}
+              click={() => handleAddItemToCart(dbItems)}
+              onCardClick={() => handleCardClick(dbItems[4].id)}
+            />
+          </div>
+        </div>
       </div>
     </>
   );
