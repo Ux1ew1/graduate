@@ -13,7 +13,6 @@ const CardDetails = () => {
 
   const recipes = useFetchItemsStore((state) => state.items); // получаем товары из стора
   const fetchItems = useFetchItemsStore((state) => state.fetchItems); // затягиваем товары из бызы даныых
-  const updateQuantity = useProductStore((state) => state.updateQuantity);
 
   // стейты для работы с алертами
   const [isAlertOpen, setAlertOpen] = useState(false);
@@ -56,24 +55,33 @@ const CardDetails = () => {
       <div className={styles.cardWrapper}>
         <div>
           <img
-            src={`../../../public/${product?.img}`}
+            src={product?.img}
             alt={product?.name}
             className={styles.image}
           />
           <div>
             {cartItems.find((item) => item?.id === product?.id) ? (
-              <div>
-                <Button onClick={() => handleCompleteItem(product)}>
+              <div className="mt-2">
+                <Button
+                  className="w-40 py-2 flex justify-center"
+                  onClick={() => handleCompleteItem(product)}
+                >
                   Убрать
                 </Button>
               </div>
             ) : (
-              <Button
-                variant="info"
-                onClick={() => handleAddItemToCart(product)}
-              >
-                Купить
-              </Button>
+              <div className="flex gap-6 items-center mt-2">
+                <Button
+                  className="w-40 py-2 flex justify-center"
+                  variant="info"
+                  onClick={() => handleAddItemToCart(product)}
+                >
+                  Купить
+                </Button>
+                <span className="text-xl font-semibold">
+                  {product?.price} рублей
+                </span>
+              </div>
             )}
           </div>
         </div>
