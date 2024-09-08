@@ -8,11 +8,11 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import Input from "../Input/Input";
-import Cart from "../Cart/Cart";
 import Styles from "./Header.module.css";
-import Selector from "../Selector/Selector";
-import SelectorItem from "../Selector/SelectorItem";
+import DropDown from "../DropDown/DropDown";
+import DropDownItem from "../DropDown/DropDownItems";
 import SearchBar from "../SearchBar/SearchBar";
+import Alert from "../Alert/Alert";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -37,19 +37,37 @@ const Header = () => {
 
   const [personalData, setPersonalData] = useState(false);
 
-  const [showSelector, setShowSelector] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
 
-  const calculateCartPrice = useProductStore(
-    (state) => state.calculateCartPrice
-  );
+  const [alertData, setAlertData] = useState({
+    title: "",
+    subtitle: "",
+    variant: "neutral",
+    isOpen: false,
+  });
+
+  const toggleDropDown = () => {
+    setShowDropDown(!showDropDown);
+  };
 
   const cartItems = useProductStore((state) => state.cartItems);
+
+  const loginShowAlert = () => {
+    setAlertData({
+      title: "Вход в систему",
+      subtitle: "Вход успешно выполнен",
+      variant: "success",
+      isOpen: true,
+    });
+  };
 
   // сабмит формы логина
   const handleLoginForm = (event) => {
     event.preventDefault();
 
     onLogin(formValues);
+
+    console.log(user);
 
     setShowLoginModal(false);
 
@@ -65,20 +83,6 @@ const Header = () => {
     setShowRegistrationModal(false);
 
     resetForm();
-  };
-
-  // функция для показа корзины товаров
-  const showCartFunction = () => {
-    calculateCartPrice();
-
-    setShowCart(true);
-
-    console.log(!!showCart);
-  };
-
-  // функция для закрытия корзины товаров
-  const closeCartFunction = () => {
-    setShowCart(false);
   };
 
   // Функция для показа логина
@@ -118,13 +122,15 @@ const Header = () => {
   };
 
   // функция для показа селектора
-  const handleShowSelector = () => {
-    setShowSelector(true);
+  const handleShowDropDown = () => {
+    if (!showDropDown) {
+      setShowDropDown(true);
+    }
   };
 
   // функция для скрытия селектора
-  const handleCloseSelector = () => {
-    setShowSelector(false);
+  const handleCloseDropDown = () => {
+    setShowDropDown(false);
   };
 
   const cartItemsQuantity = () => {
@@ -181,12 +187,12 @@ const Header = () => {
             ) : (
               <div className="flex gap-2 items-center border border-black p-1 relative">
                 <button
-                  onClick={() => handleShowSelector()}
+                  onClick={handleShowDropDown}
                   className="flex gap-2 items-center"
                 >
                   <IoIosArrowDown
                     className={
-                      showSelector
+                      showDropDown
                         ? "rotate-180 transition-all outline-none"
                         : "transition-all outline-none"
                     }
@@ -194,20 +200,31 @@ const Header = () => {
                   {user?.login}
                 </button>
 
-                {showSelector && (
-                  <Selector
-                    isOpen={showSelector}
-                    onClose={handleCloseSelector}
+                {showDropDown && (
+                  <DropDown
+                    isOpen={showDropDown}
+                    onClose={handleCloseDropDown}
                     className="absolute top-10 left-0"
                   >
-                    <SelectorItem>Настройки</SelectorItem>
-                    <SelectorItem onClick={onLogout}>Выйти</SelectorItem>
-                  </Selector>
+                    <DropDownItem>Настройки</DropDownItem>
+                    <DropDownItem onClick={onLogout}>Выйти</DropDownItem>
+                  </DropDown>
                 )}
               </div>
             )}
           </div>
         </div>
+        <Alert
+          title={alertData?.title}
+          subtitle={alertData?.subtitle}
+          variant={alertData?.variant}
+          isOpen={alertData?.isOpen}
+          onClose={() => {
+            setAlertData((prevAlertData) => ({
+              isOpen: !prevAlertData.isOpen,
+            }));
+          }}
+        />
       </div>
 
       {showLoginModal && (
