@@ -19,7 +19,7 @@ const Cards = () => {
     addCartItem(item);
 
     setItemName(item?.name);
-    
+
     setAlertOpen(true);
   };
 
@@ -27,8 +27,9 @@ const Cards = () => {
     fetchItems();
   }, [fetchItems]);
 
-  const handleCardClick = (id) => {
+  const handleCardClick = (id, event) => {
     console.log(id);
+    console.log(event?.target);
     navigate(`/cards/${id}`);
   };
 
@@ -46,7 +47,7 @@ const Cards = () => {
             description={product?.description}
             price={product?.price}
             click={() => handleAddItemToCart(product)}
-            onCardClick={() => handleCardClick(product.id)}
+            onCardClick={(event) => handleCardClick(product.id, event)}
           />
         ))}
 
