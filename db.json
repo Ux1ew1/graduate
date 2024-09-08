@@ -1,172 +1,172 @@
 {
   "menu": [
     {
-      "img": "image/test-image.jpg",
-      "id": "1",
+      "img": "https://шафран93.рф/main/media/cache/8c/8d/8c8d91de1de959bb086c1a80254220b0.webp",
       "name": "Пицца Пепперони",
       "description": "Пеперо́ни — острая разновидность салями итало-американского происхождения, а также название пиццы американского происхождения. ",
       "composition": "Салями пепперони, острый консервированный перец, сыр пармезан, свежая зелень, паприка, твёрдый сыр",
       "category": "Пицца",
       "price": 100,
-      "cooking": "25 минут"
+      "cooking": "25 минут",
+      "id": "1"
     },
     {
-      "img": "image/test-image.jpg",
-      "id": "2",
+      "img": "https://attuale.ru/wp-content/uploads/2018/04/6eaa1be0f1976c5f5a5f2d2b3ae42fc8.jpg",
       "name": "Пицца Маргарита",
       "description": "Классическая итальянская пицца с томатами, моцареллой и базиликом.",
       "composition": "Томаты, сыр моцарелла, свежий базилик, оливковое масло",
-      "category": "Пицца",
+      "category": "пицца",
       "price": 90,
-      "cooking": "25 минут"
+      "cooking": "25 минут",
+      "id": "2"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://avatars.mds.yandex.net/i?id=4dbab52f74ca6a039260d7cfbb733299_l-5226501-images-thumbs&n=13",
       "id": "3",
       "name": "Пицца Четыре Сыра",
       "description": "Пицца с четырьмя видами сыра: моцарелла, горгонзола, пармезан и эмменталь.",
       "composition": "Сыр моцарелла, сыр горгонзола, сыр пармезан, сыр эмменталь",
-      "category": "Пицца",
+      "category": "пицца",
       "price": 110,
       "cooking": "25 минут"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://sladimfood.ru/wp-content/uploads/2021/02/Sup-Minestrone.jpg",
       "id": "4",
       "name": "Суп Минестроне",
       "description": "Традиционный итальянский овощной суп с добавлением пасты.",
       "composition": "Овощи, паста, томатный соус, оливковое масло",
-      "category": "Суп",
+      "category": "суп",
       "price": 60,
       "cooking": "12 минут"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://i.pinimg.com/originals/d7/e1/5c/d7e15c401a1d2c7c950ff46d28ffc228.jpg",
       "id": "5",
       "name": "Суп из чечевицы",
       "description": "Насыщенный суп из чечевицы с добавлением овощей и специй.",
       "composition": "Чечевица, овощи, специи, оливковое масло",
-      "category": "Суп",
+      "category": "суп",
       "price": 55,
       "cooking": "15 минут"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://i.pinimg.com/originals/56/58/63/565863f1f4d413f84ef64d71117be35b.jpg",
       "id": "6",
       "name": "Молочный коктейль с клубникой",
       "description": "Освежающий молочный коктейль с натуральной клубникой.",
       "composition": "Молоко, клубника, сахар, ванильный экстракт",
-      "category": "Коктейль",
+      "category": "коктейль",
       "price": 40,
       "cooking": "2 минуты"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://avatars.mds.yandex.net/i?id=1c76bf7b0b5c0b23dfd9039c86678bfb_l-4827771-images-thumbs&n=13",
       "id": "7",
       "name": "Молочный коктейль с бананом",
       "description": "Кремовый молочный коктейль с бананом.",
       "composition": "Молоко, банан, сахар, ванильный экстракт",
-      "category": "Коктейль",
+      "category": "коктейль",
       "price": 40,
       "cooking": "2 минуты"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://trikky.ru/wp-content/blogs.dir/1/files/2019/01/11/item_2637210_1.jpg",
       "id": "8",
       "name": "Молочный коктейль с шоколадом",
       "description": "Сладкий молочный коктейль с шоколадом.",
       "composition": "Молоко, шоколад, сахар, ванильный экстракт",
-      "category": "Коктейль",
+      "category": "коктейль",
       "price": 45,
       "cooking": "2 минуты"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://i.pinimg.com/736x/fa/a0/2e/faa02e204c4027c54111e8dfd23058b2.jpg",
       "id": "9",
       "name": "Молочный коктейль с ванилью",
       "description": "Классический молочный коктейль с ванилью.",
       "composition": "Молоко, ванильный экстракт, сахар",
-      "category": "Коктейль",
+      "category": "коктейль",
       "price": 35,
       "cooking": "2 минуты"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://i.pinimg.com/736x/e9/87/35/e98735ae7f2b90fba0088d206659e879.jpg",
       "id": "10",
       "name": "Молочный коктейль с карамелью",
       "description": "Сладкий молочный коктейль с карамелью.",
       "composition": "Молоко, карамель, сахар, ванильный экстракт",
-      "category": "Коктейль",
+      "category": "коктейль",
       "price": 45,
       "cooking": "2 минуты"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://i.pinimg.com/originals/0b/f8/12/0bf81229f742c8cbb55477f9942efdc8.jpg",
       "id": "11",
       "name": "Молочный коктейль с кофе",
       "description": "Молочный коктейль с ароматом кофе.",
       "composition": "Молоко, кофе, сахар, ванильный экстракт",
-      "category": "Коктейль",
+      "category": "коктейль",
       "price": 45,
       "cooking": "2 минуты"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://avatars.mds.yandex.net/i?id=912e7346710f31f904af47f51c8df6a50181329f-10232499-images-thumbs&n=13",
       "id": "12",
       "name": "Салат Капрезе",
       "description": "Классический итальянский салат с помидорами, моцареллой и базиликом.",
       "composition": "Помидоры, сыр моцарелла, свежий базилик, оливковое масло",
-      "category": "Салат",
+      "category": "салат",
       "price": 70,
       "cooking": "2 минуты"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://cdn-s-static.catery.ru/storage/menu/item/2/6/0/4/260439/preview_preview_image-xWoNhgqkP4nMJoU52Rii79xm12U4Fg1iHw.jpg",
       "id": "13",
       "name": "Салат с рукколой и пармезаном",
       "description": "Свежий салат с рукколой, пармезаном и оливковым маслом.",
       "composition": "Руккола, сыр пармезан, оливковое масло, лимонный сок",
-      "category": "Салат",
+      "category": "салат",
       "price": 65,
       "cooking": "12 минут"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://i.pinimg.com/originals/94/de/8b/94de8b99a42bee0c93ec61925a6cb0a7.jpg",
       "id": "14",
       "name": "Пьядина с ветчиной и сыром",
       "description": "Итальянский сэндвич с ветчиной и сыром.",
       "composition": "Ветчина, сыр моцарелла, свежие овощи, оливковое масло",
-      "category": "Пьядина",
+      "category": "пьядина",
       "price": 80,
       "cooking": "25 минут"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://avatars.mds.yandex.net/i?id=a1cd5c56d2ef785e98927e38a7493da6_l-5876445-images-thumbs&n=13",
       "id": "15",
       "name": "Пьядина с курицей и овощами",
       "description": "Итальянский сэндвич с курицей и свежими овощами.",
       "composition": "Курица, свежие овощи, сыр моцарелла, оливковое масло",
-      "category": "Пьядина",
+      "category": "пьядина",
       "price": 85,
       "cooking": "25 минут"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://thumbs.dreamstime.com/b/pizza-calzone-basil-leaves-close-up-wooden-round-board-cutted-tomato-cheese-ham-126818669.jpg",
       "id": "16",
       "name": "Кальцоне с сыром и ветчиной",
       "description": "Закрытая пицца с сыром и ветчиной.",
       "composition": "Сыр моцарелла, ветчина, томатный соус, оливковое масло",
-      "category": "Фритюр",
+      "category": "фритюр",
       "price": 90,
       "cooking": "10 минут"
     },
     {
-      "img": "image/test-image.jpg",
+      "img": "https://admin.sushiman-dn.ru/wp-content/uploads/2024/02/7e86bed2-72f7-11ee-9971-00138fb919c1.jpeg",
       "id": "17",
       "name": "Моцарелла во фритюре",
       "description": "Хрустящая моцарелла во фритюре.",
       "composition": "Сыр моцарелла, панировочные сухари, оливковое масло",
-      "category": "Фритюр",
+      "category": "фритюр",
       "price": 70,
       "cooking": "10 минут"
     }
@@ -174,23 +174,10 @@
   "users": [
     {
       "id": "6b96",
-      "login": "12",
+      "login": "Admin",
       "password": "11111111",
       "name": "Admin",
       "role": "admin"
-    },
-    {
-      "id": "eb65",
-      "login": "1",
-      "password": "11111111",
-      "role": "user"
-    },
-    {
-      "id": "ceb5",
-      "login": "Uxlewl",
-      "password": "bonus0220",
-      "name": "Иван",
-      "role": "user"
     },
     {
       "id": "7c62",
@@ -205,6 +192,28 @@
       "housing": "10",
       "door": "1",
       "room": "2",
+      "role": "user"
+    },
+    {
+      "id": "0a1c",
+      "login": "Ux",
+      "password": "qqqqqqqq",
+      "name": "Privet",
+      "role": "user"
+    },
+    {
+      "id": "deed",
+      "login": "Hi",
+      "password": "12121212",
+      "name": "Геннадий Птицын ",
+      "phone": "+71111111111",
+      "email": "1@mail.ru",
+      "city": "Москва",
+      "street": "Лебедева",
+      "building": "12",
+      "housing": "12",
+      "door": "2",
+      "room": "20",
       "role": "user"
     }
   ],
