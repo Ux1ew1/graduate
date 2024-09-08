@@ -22,33 +22,34 @@ const Card = (props) => {
 
   return (
     <div
-      onClick={handleCardClick}
       key={id ?? "undefined"}
       data-id={id ?? "undefined"}
-      className="bg-white rounded-lg shadow-lg overflow-hidden max-w-xs w-full"
+      className="bg-white rounded-lg shadow-lg overflow-hidden max-w-xs w-full cursor-pointer"
     >
-      <img src={image} alt="Mountain" className="w-full h-64 object-cover" />
-      <div className="p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          {title ?? "undefined"}
-        </h2>
-        <p className="text-gray-700 leading-tight mb-4">
-          {description ?? "undefined"}
-        </p>
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <span className="text-gray-800 font-semibold">
-              Цена: {price ?? "undefined"} рублей
-            </span>
-          </div>
-          <button
-            // onClick={() => id && click(id)}
-            onClick={() => click()}
-            className="w-24 py-2 bg-blue-400 text-slate-100 rounded-lg"
-          >
-            Buy now
-          </button>
+      <div id="test" onClick={handleCardClick}>
+        <img src={image} alt="Mountain" className="w-full h-64 object-cover" />
+        <div className="p-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            {title ?? "undefined"}
+          </h2>
+          <p className="text-gray-700 leading-tight mb-4">
+            {description ?? "undefined"}
+          </p>
         </div>
+      </div>
+      <div className="flex justify-between items-center px-6 py-2">
+        <div className="flex items-center">
+          <span className="text-gray-800 font-semibold">
+            Цена: {price ?? "undefined"} рублей
+          </span>
+        </div>
+        <button
+          // onClick={() => id && click(id)}
+          onClick={() => click()}
+          className="w-24 py-2 bg-blue-400 text-slate-100 rounded-lg"
+        >
+          Buy now
+        </button>
       </div>
     </div>
   );
